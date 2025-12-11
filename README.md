@@ -1,11 +1,9 @@
 🐍 Snake Game - Raylib Implementation
 
 Este projeto consiste em uma implementação completa e moderna do clássico jogo Snake, desenvolvido na linguagem C utilizando a biblioteca gráfica Raylib. O jogo foi estruturado com foco em boas práticas de programação, gerenciamento de memória e arquitetura de software.
-👥 Autores
+👥 Autor
 
-    Clésio Junior
-
-    Matheus Soares
+    Matheus Soares Ferreira Ramos
 
 🎮 Funcionalidades
 
@@ -34,41 +32,41 @@ O código foi arquitetado para ser modular e seguro. Abaixo, explicamos os pilar
 
 O fluxo do jogo é controlado por uma máquina de estados finita, definida no main.c. Um switch central gerencia qual tela deve ser atualizada e desenhada a cada frame:
 
-    TELA_MENU: Navegação e seleção.
+TELA_MENU: Navegação e seleção.
 
-    TELA_JOGO: Onde a lógica da cobra acontece.
+TELA_JOGO: Onde a lógica da cobra acontece.
 
-    TELA_CONFIG: Alteração de variáveis globais (resolução/mapa).
+TELA_CONFIG: Alteração de variáveis globais (resolução/mapa).
 
-    TELA_NOME: Input de texto caso o jogador bata um recorde.
+TELA_NOME: Input de texto caso o jogador bata um recorde.
 
-    TELA_RANKING: Exibição e leitura do arquivo de pontuação.
+TELA_RANKING: Exibição e leitura do arquivo de pontuação.
 
 2. Lista Encadeada (Linked List)
 
 A estrutura da cobra não é um vetor fixo. Utilizamos uma Lista Duplamente Encadeada (struct Body).
 
-    Movimento: A cada passo, alocamos (malloc) uma nova "cabeça" na direção desejada e liberamos (free) o último pedaço da "cauda".
+Movimento: A cada passo, alocamos (malloc) uma nova "cabeça" na direção desejada e liberamos (free) o último pedaço da "cauda".
 
-    Crescimento: Ao comer uma fruta, criamos a nova cabeça mas não removemos a cauda, aumentando efetivamente o tamanho da lista.
+Crescimento: Ao comer uma fruta, criamos a nova cabeça mas não removemos a cauda, aumentando efetivamente o tamanho da lista.
 
-    Memória: A função liberar_cobra garante que toda a memória alocada dinamicamente seja limpa ao reiniciar o jogo ou fechar a janela, prevenindo memory leaks.
+Memória: A função liberar_cobra garante que toda a memória alocada dinamicamente seja limpa ao reiniciar o jogo ou fechar a janela, prevenindo memory leaks.
 
 3. Gerenciamento de Assets
 
 Para garantir robustez, o carregamento de imagens e sons possui verificações de segurança:
 
-    As imagens são redimensionadas em tempo de execução para se adequarem ao tamanho do grid (TAM_GRID), evitando que imagens grandes "quebrem" o visual do jogo.
+As imagens são redimensionadas em tempo de execução para se adequarem ao tamanho do grid (TAM_GRID), evitando que imagens grandes "quebrem" o visual do jogo.
 
-    O sistema de áudio utiliza UpdateMusicStream para manter a música em looping, e altera o volume/pausa dinamicamente baseado em eventos do jogo (comer/morrer).
+O sistema de áudio utiliza UpdateMusicStream para manter a música em looping, e altera o volume/pausa dinamicamente baseado em eventos do jogo (comer/morrer).
 
 4. Sistema de Arquivos
 
 O ranking utiliza a biblioteca padrão stdio.h para manipular arquivos binários.
 
-    Ao iniciar, o jogo tenta ler ranking.dat. Se não existir, cria uma lista virgem.
+Ao iniciar, o jogo tenta ler ranking.dat. Se não existir, cria uma lista virgem.
 
-    Ao bater um recorde, a lista é reordenada usando Bubble Sort e o arquivo é sobrescrito com os novos dados.
+Ao bater um recorde, a lista é reordenada usando Bubble Sort e o arquivo é sobrescrito com os novos dados.
 
 🚀 Como Compilar e Rodar
 Pré-requisitos
@@ -94,23 +92,14 @@ Plaintext
 Comandos de Compilação
 
 Abra o terminal na pasta do projeto e execute:
-
-    Limpar compilações anteriores (Recomendado):
-    Bash
-
-make clean
-
-Compilar e Rodar:
-Bash
-
     make run
 
 🕹️ Controles
 
-    Setas Direcionais: Movimentam a cobra e navegam nos menus.
+Setas Direcionais: Movimentam a cobra e navegam nos menus.
 
-    ENTER: Seleciona opções no menu e confirma o nome no ranking.
+ENTER: Seleciona opções no menu e confirma o nome no ranking.
 
-    ESC: Pausa/Desiste da partida (volta ao Menu) ou fecha o jogo.
+ESC: Pausa/Desiste da partida (volta ao Menu) ou fecha o jogo.
 
 Trabalho desenvolvido para a disciplina de Laboratório de Programação.https://github.com/matheusoare/Jogo-em-C---Snake
