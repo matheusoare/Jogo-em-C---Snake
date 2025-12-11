@@ -183,8 +183,8 @@ void atualiza_menu(Game *g){
             //escolha do usuario
             case Opcao_iniciar:
                 {
-                    Image img = LoadImage("assets/background.jpeg");
-                    if (img.data == NULL) img = LoadImage("assets/background.jpg"); 
+                    Image img = LoadImage("assets/background.png");
+                    if (img.data == NULL) img = LoadImage("assets/background.png"); 
                     
                     if (img.data != NULL) {
                         ImageResize(&img, g->largura_tela, g->altura_tela);
@@ -549,14 +549,15 @@ void CarregarAssets(Game *g) {
         UnloadImage(imgTmp);
     }
 
-    if (FileExists("assets/background.jpeg")) {
-        imgTmp = LoadImage("assets/background.jpeg");
+    if (FileExists("assets/background.png")) {
+        imgTmp = LoadImage("assets/background.png");
         ImageResize(&imgTmp, LARGURA_PADRAO, ALTURA_PADRAO);
         g->tex_background = LoadTextureFromImage(imgTmp);
         UnloadImage(imgTmp);
+
     } 
-    else if (FileExists("assets/background.jpg")) {
-        imgTmp = LoadImage("assets/background.jpg");
+    else if (FileExists("assets/background.png")) {
+        imgTmp = LoadImage("assets/background.png");
         ImageResize(&imgTmp, LARGURA_PADRAO, ALTURA_PADRAO);
         g->tex_background = LoadTextureFromImage(imgTmp);
         UnloadImage(imgTmp);

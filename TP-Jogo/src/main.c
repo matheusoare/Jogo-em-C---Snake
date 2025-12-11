@@ -4,6 +4,21 @@
 
 int main(void) {
     SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN);
+
+    int tentativas = 0;
+    while (!DirectoryExists("assets") && tentativas < 3) {
+        ChangeDirectory(".."); // Sobe um nível (cd ..)
+        tentativas++;
+    }
+
+    // Debug para você ver onde ele parou
+    if (DirectoryExists("assets")) {
+        printf("SUCESSO: Pasta 'assets' encontrada em: %s\n", GetWorkingDirectory());
+    } else {
+        printf("ERRO CRITICO: Pasta 'assets' nao encontrada apos buscar em 3 niveis.\n");
+        printf("Diretorio final: %s\n", GetWorkingDirectory());
+    }
+
     InitWindow(LARGURA_PADRAO, ALTURA_PADRAO, "Snake Game - Trabalho Final");
     InitAudioDevice(); 
     SetTargetFPS(60); 
