@@ -1,0 +1,16 @@
+# Ignorar executáveis e binários (Windows e Linux)
+*.exe
+*.out
+*.o
+*.obj
+
+# Ignorar bibliotecas estáticas compiladas (Opcional*)
+*.a
+*.lib
+
+# Ignorar pastas de configuração pessoal do VS Code
+.vscode/
+
+# Ignorar ficheiros de sistema (Mac e Windows)
+.DS_Store
+Thumbs.db
